@@ -2,7 +2,7 @@ install:
 	poetry install
 
 project:
-	poetry run project
+	python labyrinth_game/main.py
 
 build:
 	poetry build
@@ -13,4 +13,10 @@ publish:
 package-install:
 	python -m pip install --force-reinstall dist/*.whl
 
-.PHONY: install project build publish package-install
+test:
+	python -c "from labyrinth_game.main import main; main()"
+
+clean:
+	rm -rf dist/ build/ *.egg-info/
+
+.PHONY: install project build publish package-install test clean
