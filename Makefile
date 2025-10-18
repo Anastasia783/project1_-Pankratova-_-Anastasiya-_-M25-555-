@@ -7,7 +7,7 @@ project:
 build:
 	poetry build
 
-publish:
+publish-test:
 	poetry publish --dry-run
 
 package-install:
@@ -19,4 +19,6 @@ test:
 clean:
 	rm -rf dist/ build/ *.egg-info/
 
-.PHONY: install project build publish package-install test clean
+all: clean build package-install test
+
+.PHONY: install project build publish-test package-install test clean all
