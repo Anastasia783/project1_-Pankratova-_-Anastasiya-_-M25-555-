@@ -1,0 +1,19 @@
+[tool.poetry]
+name = "project1_Pankratova_Anastasiya_M25-555"
+version = "0.1.0"
+description = ""
+authors = ["Anastasiya <7834367@mail.ru>"]
+readme = "README.md"
+packages = [
+    { include = "labyrinth_game" },
+]
+
+[tool.poetry.dependencies]
+python = "^3.8"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poetry.scripts]
+project = "labyrinth_game.main:main"
