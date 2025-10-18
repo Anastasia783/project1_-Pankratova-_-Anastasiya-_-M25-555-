@@ -7,7 +7,7 @@ project:
 build:
 	poetry build
 
-publish-test:
+publish:
 	poetry publish --dry-run
 
 package-install:
@@ -16,9 +16,24 @@ package-install:
 test:
 	python -c "from labyrinth_game.main import main; main()"
 
+lint:
+	ruff check .
+
+lint-fix:
+	ruff check --fix .
+
+format:
+	ruff format .
+
+check: lint
+	@echo "All checks passed!"
+
+quality: lint format check
+	@echo "✅ Code quality checks passed!"
+
 clean:
 	rm -rf dist/ build/ *.egg-info/
 
-all: clean build package-install test
+all: clean install quality build package-install test
 
-.PHONY: install project build publish-test package-install test clean all
+.PHONY: install project build publish package-install test lint lint-fix format check quality clean all
